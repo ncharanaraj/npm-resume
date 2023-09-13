@@ -1,0 +1,33 @@
+{
+  "name": "npm-resume",
+  "version": "1.0.0",
+  "description": "A command line portfolio to showcase my abilities.",
+  "main": "index.mjs",
+  "scripts": {
+    "test": ""
+  },
+  "bin": {
+    "ncharan": "index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ncharanaraj/npm-resume.git"
+  },
+  "keywords": [
+    "charanaraj",
+    "npm-charan",
+    "ncharan",
+    "charan-resume",
+    "resume"
+  ],
+  "author": "Charan N",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ncharanaraj/npm-resume/issues"
+  },
+  "homepage": "https://github.com/ncharanaraj/npm-resume#readme",
+  "dependencies": {
+    "cli-markdown": "^3.0.5",
+    "commander": "^11.0.0"
+  }
+}
