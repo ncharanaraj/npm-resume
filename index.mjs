@@ -15,17 +15,11 @@ const { resume } = program.opts();
 
 if (resume) {
   fetch(
-    "https://raw.githubusercontent.com/ncharanaraj/npm-resume/main/RESUME.md",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "text/plain",
-      },
-    }
+    "https://raw.githubusercontent.com/ncharanaraj/ncharanaraj/main/RESUME.md"
   )
     .then((response) => response.text())
     .then((text) => console.log(cliMd(text)))
-    .catch((e) => console.log("Error fetching resume", e));
+    .catch((e) => console.error("Error fetching resume", e));
 } else {
   fetch(
     "https://raw.githubusercontent.com/ncharanaraj/ncharanaraj/main/README.md",
@@ -38,5 +32,5 @@ if (resume) {
   )
     .then((response) => response.text())
     .then((text) => console.log(cliMd(text)))
-    .catch((e) => console.log("Error fetching about", e));
+    .catch((e) => console.error("Error fetching about", e));
 }
