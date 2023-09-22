@@ -12,25 +12,38 @@ program
 program.parse(process.argv);
 
 const { resume } = program.opts();
+const resumeURL =
+  "https://raw.githubusercontent.com/ncharanaraj/ncharanaraj/main/RESUME.md";
+const readmeURL =
+  "https://raw.githubusercontent.com/ncharanaraj/ncharanaraj/main/README.md";
+
+async function fetchMarkdownContent(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch content. Status code: ${response.status}`
+      );
+    }
+    const text = await response.text();
+    return text;
+  } catch (error) {
+    throw new Error(`Error fetching content: ${error.message}`);
+  }
+}
+
+async function displayMarkdown(url) {
+  try {
+    const markdownContent = await fetchMarkdownContent(url);
+    const formattedText = cliMd(markdownContent);
+    console.log(formattedText);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
 if (resume) {
-  fetch(
-    "https://raw.githubusercontent.com/ncharanaraj/ncharanaraj/main/RESUME.md"
-  )
-    .then((response) => response.text())
-    .then((text) => console.log(cliMd(text)))
-    .catch((e) => console.error("Error fetching resume", e));
+  displayMarkdown(resumeURL);
 } else {
-  fetch(
-    "https://raw.githubusercontent.com/ncharanaraj/ncharanaraj/main/README.md",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "text/plain",
-      },
-    }
-  )
-    .then((response) => response.text())
-    .then((text) => console.log(cliMd(text)))
-    .catch((e) => console.error("Error fetching about", e));
+  displayMarkdown(readmeURL);
 }

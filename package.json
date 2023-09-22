@@ -1,6 +1,6 @@
 {
   "name": "ncharan",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A command line portfolio to showcase my abilities.",
   "main": "index.mjs",
   "scripts": {
